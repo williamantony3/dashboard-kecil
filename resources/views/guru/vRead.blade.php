@@ -1,10 +1,10 @@
 @extends('base')
 @section('content')
 
-<h2>INI BUAT VIEW</h2>
 <div style="padding: 2vw">
+    <h1>Teacher</h1>
     <div style="padding-bottom: 1vw">
-        <a href="{{ route('guru.create') }}" class="btn btn-warning">Create</a>
+        <a href="{{ route('guru.create') }}" class="btn btn-success">Create</a>
     </div>
 
     @if ($message = Session::get('success'))
@@ -16,9 +16,9 @@
     <table class="table table-bordered table-dark" >
         <tr>
             <th>No</th>
-            <th>ID</th>
-            <th>Nama</th>
-            <th>Guru</th>
+            <th>Teacher ID</th>
+            <th>Name</th>
+            <th>Teacher</th>
             <th>Action</th>
         </tr>
         @php

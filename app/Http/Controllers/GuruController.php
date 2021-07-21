@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class GuruController extends Controller
 {
     public function index(){
-        $guru = Guru::all();
+        $guru = DB::table('guru')->get();
         return view('guru.vRead', compact('guru'));
     }
 
@@ -35,10 +35,11 @@ class GuruController extends Controller
 
     public function edit(Guru $guru){
         // $guru = DB::table('guru')->where('id', $id_guru)->first();
+        // echo($guru->id);
         return view('guru.vUpdate', compact('guru'));
     }
 
-    public function update(Request $request, Guru $guru){
+    public function update(Request $request, $guru_id){
         $request->validate([
             'nama' => 'required|max:255',
             'umur' => 'required',
@@ -49,7 +50,7 @@ class GuruController extends Controller
             'umur'=>$request->umur
         ];
 
-        DB::table('guru')-> where('id', $guru->id)->update($data);
+        DB::table('guru')-> where('id', $guru_id)->update($data);
         return redirect()->route('guru.index')->with('success','Guru berhasil diubah.');
     }
 

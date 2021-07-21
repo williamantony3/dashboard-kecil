@@ -1,8 +1,8 @@
 @extends('base')
 @section('content')
 
-<h2>INI BUAT UPDATE</h2>
 <div class="pull-right" style="padding-left: 2vw">
+    <h1>Update Teacher</h1>
     <a class="btn btn-primary" href="{{ route('guru.index') }}"> Back</a>
 </div>
 <div class="row">
@@ -21,9 +21,9 @@
 
             <table class="table table-bordered table-dark" >
                 <tr>
-                    <th>ID</th>
-                    <th>Nama</th>
-                    <th>Guru</th>
+                    <th>Teacher ID</th>
+                    <th>Name</th>
+                    <th>Teacher</th>
                 </tr>
                 <tr>
                     <td>{{ $guru->id }}</td>
@@ -45,8 +45,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>umur:</strong>
-                            <input type="text" name="umur" class="form-control" placeholder="umur">
+                            <strong>Age:</strong>
+                            <input type="text" name="umur" class="form-control" placeholder="Age">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
