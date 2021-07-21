@@ -32,15 +32,13 @@
                 <td>{{ $guruTemp->nama }}</td>
                 <td>{{ $guruTemp->umur }}</td>
                 <td>
-                    <div class="row">
-                        <div class="col md 12">
-                            <div>
-                                <div class="pull-right">
-                                    <a href="{{ url('/delete') }}" class="btn btn-warning">Delete</a>
-                                    <a href="{{ url('/update') }}" class="btn btn-warning">Update</a>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="row" style="padding: 1vw">
+                        <a href="{{ route('guru.edit', $guruTemp->id) }}" class="btn btn-warning">Update</a>
+                        <form action="{{ route('guru.destroy', $guruTemp->id)}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Delete</button>
+                        </form>
                     </div>
                 </td>
             </tr>
