@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 class GuruController extends Controller
 {
     public function index(){
-        $guru = Guru::all();
+        $guru = DB::table('guru')->get();
         return view('guru.vRead', compact('guru'));
     }
 
@@ -19,23 +19,12 @@ class GuruController extends Controller
     }
 
     public function store(Request $request){
-        // $request->validate([
-        //     'name' => 'required|max:255',
-        //     'umur' => '',
-        // ]);
-
-        // Guru::create($request->all());
-
-        // foreach ($request as $item) {
-        //     DB::table('guru')->insert([
-        //         'id' => ' ',
-        //         'nama' => $item['nama'],
-        //         'umur' => $item['umur']
-        //     ]);
-        // }
+        $request->validate([
+            'nama' => 'required|max:255',
+            'umur' => 'required',
+        ]);
 
         $data = [
-            // 'id'=>'',
             'nama'=>$request->nama,
             'umur'=>$request->umur
         ];
@@ -44,11 +33,29 @@ class GuruController extends Controller
         return redirect()->route('guru.index')->with('success','Guru berhasil ditambahkan.');
     }
 
-    public function update(){
-        return view('guru.vUpdate');
+    public function edit(Guru $guru){
+        // $guru = DB::table('guru')->where('id', $id_guru)->first();
+        // echo($guru->id);
+        return view('guru.vUpdate', compact('guru'));
     }
 
-    public function delete(){
-        return view('guru.vDelete');
+    public function update(Request $request, $guru_id){
+        $request->validate([
+            'nama' => 'required|max:255',
+            'umur' => 'required',
+        ]);
+
+        $data = [
+            'nama'=>$request->nama,
+            'umur'=>$request->umur
+        ];
+
+        DB::table('guru')-> where('id', $guru_id)->update($data);
+        return redirect()->route('guru.index')->with('success','Guru berhasil diubah.');
+    }
+
+    public function destroy($id_guru){
+        DB::table('guru')->where('id', $id_guru)->delete();
+        return redirect()->route('guru.index')->with('success','Guru berhasil dihapus.');
     }
 }

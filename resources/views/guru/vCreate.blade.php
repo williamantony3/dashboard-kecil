@@ -1,8 +1,8 @@
 @extends('base')
 @section('content')
 
-<h2>INI BUAT CREATE</h2>
 <div class="pull-right" style="padding-left: 2vw">
+    <h1>Insert Teacher</h1>
     <a class="btn btn-primary" href="{{ route('guru.index') }}"> Back</a>
 </div>
 <div class="row">
@@ -32,8 +32,8 @@
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
-                            <strong>umur:</strong>
-                            <input type="text" name="umur" class="form-control" placeholder="umur">
+                            <strong>Age:</strong>
+                            <input type="text" name="umur" class="form-control" placeholder="Age">
                         </div>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
