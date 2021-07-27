@@ -14,3 +14,7 @@
 Route::get('/', function () {
     return view('index');
 });
+
+// vgandhi075
+Route::resource('guru','GuruController');
+
