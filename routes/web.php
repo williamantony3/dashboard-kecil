@@ -18,3 +18,5 @@ Route::get('/', function () {
 // vgandhi075
 Route::resource('guru','GuruController');
 
+Route::resource('buku','BukuController');
+
